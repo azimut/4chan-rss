@@ -69,9 +69,10 @@ func getThreads(board string, pages uint) (threads []*api.Thread, err error) {
 func processThreads(threads []*api.Thread) []*feeds.Item {
 	var items []*feeds.Item
 	for _, thread := range threads {
-		if thread.Replies() > int(options.replies) {
-			items = append(items, processPost(thread.OP))
+		if thread.Replies() < int(options.replies) {
+			continue
 		}
+		items = append(items, processPost(thread.OP))
 	}
 	return items
 }
