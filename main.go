@@ -20,7 +20,7 @@ var options struct {
 
 func init() {
 	flag.UintVar(&options.replies, "n", 10, "cutoff of number of replies on thread")
-	flag.UintVar(&options.pages, "p", 1, "number of pages/request to get/make") // TODO
+	flag.UintVar(&options.pages, "p", 1, "number of pages/request to get/make")
 	flag.StringVar(&options.boardName, "b", "g", "board name")
 }
 

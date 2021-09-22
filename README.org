@@ -2,3 +2,34 @@
   Returns a RSS feed of threads of a /board/.
   Like official RSS (index.rss)
   BUT removes threads with less than *-n* number of replies.
+** Usage
+   #+begin_src
+> 4chan-rss -b g -n 30 -p 1
+<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
+  <title>4chan /g/ threads</title>
+  <id>https://boards.4channel.org/g/</id>
+  <updated>2021-09-21T22:22:36-03:00</updated>
+  <subtitle>threads from /g/ with more than 30 comments</subtitle>
+  <link href="https://boards.4channel.org/g/"></link>
+  <author>
+    <name>Anon</name>
+  </author>
+  <entry>
+    <title>Looks like you won, adblock users.&#xD;Now</title>
+    <updated>2021-09-21T19:13:03-03:00</updated>
+    <id>tag:boards.4channel.org,2021-09-21:/g/thread/83481484/</id>
+    <link href="https://boards.4channel.org/g/thread/83481484/" rel="alternate"></link>
+    <summary type="html">Looks like you won, adblock users.&lt;br&gt;Now the ad-supported internet is dead and everything will be put behind paywalls to if they wanna keep the lights on.</summary>
+    <author>
+      <name>Anonymous</name>
+    </author>
+  </entry>
+  <entry>
+    <title>/cumg/ - Cooming Utilities &amp;amp; More General</title>
+    <updated>2021-09-18T04:31:39-03:00</updated>
+    <id>tag:boards.4channel.org,2021-09-18:/g/thread/83432094/</id>
+    <link href="https://boards.4channel.org/g/thread/83432094/" rel="alternate"></link>
+    <summary type="html">&lt;span class=&#34;quote&#34;&gt;&amp;gt;Links&lt;/span&gt;&lt;br&gt;Wiki: https://coom.tech/&lt;br&gt;Rentry: https://rentry.co/coom&lt;br&gt;FChannel General: https://fchan.xyz/g/224HRMU5&lt;br&gt;Endchan General: https://endchan.net/cumg/&lt;br&gt;Matrix space: #cumg:matrix.org&lt;br&gt;&lt;br&gt;&lt;span class=&#34;quote&#34;&gt;&amp;gt;What is /cumg/&lt;/span&gt;&lt;br&gt;In this thread we discuss technology and software for cooming, data-hoarding, scripts, and more.&lt;br&gt;&lt;br&gt;&lt;span class=&#34;quote&#34;&gt;&amp;gt;gallery-dl - scrape images and videos from many websites&lt;/span&gt;&lt;br&gt;https://github.com/mikf/gallery-dl&lt;br&gt;&lt;br&gt;&lt;span class=&#34;quote&#34;&gt;&amp;gt;Hydrus Network&lt;/span&gt;&lt;br&gt;https://hydrusnetwork.github.io/hyd&lt;wbr&gt;rus/&lt;br&gt;&lt;br&gt;&lt;span class=&#34;quote&#34;&gt;&amp;gt;Stash&lt;/span&gt;&lt;br&gt;https://github.com/stashapp/stash&lt;br&gt;&lt;br&gt;&lt;span class=&#34;quote&#34;&gt;&amp;gt;LoliSnatcher Droid&lt;/span&gt;&lt;br&gt;https://github.com/NO-ob/LoliSnatch&lt;wbr&gt;er_Droid&lt;br&gt;&lt;br&gt;&lt;span class=&#34;quote&#34;&gt;&amp;gt;Flexbooru&lt;/span&gt;&lt;br&gt;https://github.com/flexbooru/flexbo&lt;wbr&gt;oru&lt;br&gt;&lt;br&gt;Previous: &lt;a href=&#34;/g/thread/83398179#p83398179&#34; class=&#34;quotelink&#34;&gt;&amp;gt;&amp;gt;83398179&lt;/a&gt;</summary>
+    <author>
+...
+   #+end_src
