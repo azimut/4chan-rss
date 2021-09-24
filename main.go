@@ -82,6 +82,7 @@ func processPost(post *api.Post) *feeds.Item {
 	item.Title = getTitle(post)
 	item.Link = &feeds.Link{Href: fmt.Sprintf("https://boards.4channel.org/%s/thread/%d/", options.boardName, post.Id)}
 	item.Description = post.Comment
+	item.Description += fmt.Sprintf("<img alt='%s' src='%s'/>", post.File.Name, post.ImageURL())
 	item.Author = &feeds.Author{Name: post.Name}
 	item.Created = post.Time
 	return item
