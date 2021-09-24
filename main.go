@@ -91,10 +91,12 @@ func processPost(post *api.Post) *feeds.Item {
 func getTitle(post *api.Post) string {
 	title := post.Subject
 	if title == "" {
-		title = strings.TrimSpace(substring(html2text.HTML2Text(post.Comment), 40))
+		title = html2text.HTML2Text(post.Comment)
+		title = substring(title, 80)
+		title = strings.TrimSpace(title)
 	}
 	if title == "" {
-		title = substring(post.File.Name, 40)
+		title = substring(post.File.Name, 80)
 	}
 	if title == "" {
 		title = "no title"
