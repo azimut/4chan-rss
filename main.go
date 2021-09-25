@@ -106,7 +106,7 @@ func getTitle(post *api.Post) string {
 
 func substring(s string, end int) string {
 	unline := strings.ReplaceAll(s, "\n", "")
-	return unline[:min(len(s), end)]
+	return unline[:min(len(s), end-1)]
 }
 
 func min(a, b int) int {
