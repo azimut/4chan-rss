@@ -35,10 +35,6 @@ func main() {
 
 func run() (string, error) {
 	flag.Parse()
-	threads, err := getThreads(options.boardName, options.pages)
-	if err != nil {
-		return "", err
-	}
 	now := time.Now()
 	feed := &feeds.Feed{
 		Title:       fmt.Sprintf("4chan /%s/ threads", options.boardName),
@@ -46,6 +42,10 @@ func run() (string, error) {
 		Description: fmt.Sprintf("threads from /%s/ with more than %d comments", options.boardName, options.replies),
 		Author:      &feeds.Author{Name: "Anon"},
 		Created:     now,
+	}
+	threads, err := getThreads(options.boardName, options.pages)
+	if err != nil {
+		return "", err
 	}
 	feed.Items = processThreads(threads)
 	atom, err := feed.ToAtom()
@@ -105,7 +105,7 @@ func getTitle(post *api.Post) string {
 }
 
 func substring(s string, end int) string {
-	unline := strings.ReplaceAll(s, "\n", "")
+	unline := strings.ReplaceAll(s, "\n", " ")
 	return unline[:min(len(s), end-1)]
 }
 
