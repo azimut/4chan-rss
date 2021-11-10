@@ -10,7 +10,10 @@ import (
 	"github.com/gorilla/feeds"
 	"github.com/k3a/html2text"
 	"github.com/moshee/go-4chan-api/api"
+	"mvdan.cc/xurls/v2"
 )
+
+var URLRegex = xurls.Strict()
 
 var options struct {
 	boardName string
@@ -81,11 +84,15 @@ func processPost(post *api.Post) *feeds.Item {
 	item := &feeds.Item{}
 	item.Title = getTitle(post)
 	item.Link = &feeds.Link{Href: fmt.Sprintf("https://boards.4channel.org/%s/thread/%d/", options.boardName, post.Id)}
-	item.Description = post.Comment
+	item.Description = anchorize(strings.ReplaceAll(post.Comment, "<wbr>", ""))
 	item.Description += fmt.Sprintf("<img alt='%s' src='%s'/>", post.File.Name, post.ImageURL())
 	item.Author = &feeds.Author{Name: post.Name}
 	item.Created = post.Time
 	return item
+}
+
+func anchorize(comment string) string {
+	return URLRegex.ReplaceAllString(comment, "<a href='$0'>$0</a>")
 }
 
 func getTitle(post *api.Post) string {
