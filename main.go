@@ -40,11 +40,17 @@ func run() (string, error) {
 	flag.Parse()
 	now := time.Now()
 	feed := &feeds.Feed{
-		Title:       fmt.Sprintf("4chan /%s/ threads", options.boardName),
-		Link:        &feeds.Link{Href: fmt.Sprintf("https://boards.4channel.org/%s/", options.boardName)},
-		Description: fmt.Sprintf("threads from /%s/ with more than %d comments", options.boardName, options.replies),
-		Author:      &feeds.Author{Name: "Anon"},
-		Created:     now,
+		Title: fmt.Sprintf("4chan /%s/ threads", options.boardName),
+		Link: &feeds.Link{
+			Href: fmt.Sprintf("https://boards.4channel.org/%s/", options.boardName),
+		},
+		Description: fmt.Sprintf(
+			"threads from /%s/ with more than %d comments",
+			options.boardName,
+			options.replies,
+		),
+		Author:  &feeds.Author{Name: "Anon"},
+		Created: now,
 	}
 	threads, err := getThreads(options.boardName, options.pages)
 	if err != nil {
@@ -83,7 +89,9 @@ func processThreads(threads []*api.Thread) []*feeds.Item {
 func processPost(post *api.Post) *feeds.Item {
 	item := &feeds.Item{}
 	item.Title = getTitle(post)
-	item.Link = &feeds.Link{Href: fmt.Sprintf("https://boards.4channel.org/%s/thread/%d/", options.boardName, post.Id)}
+	item.Link = &feeds.Link{
+		Href: fmt.Sprintf("https://boards.4channel.org/%s/thread/%d/", options.boardName, post.Id),
+	}
 	item.Description = anchorize(strings.ReplaceAll(post.Comment, "<wbr>", ""))
 	item.Description += fmt.Sprintf("<img alt='%s' src='%s'/>", post.File.Name, post.ImageURL())
 	item.Author = &feeds.Author{Name: post.Name}
