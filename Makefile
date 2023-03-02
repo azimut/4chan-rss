@@ -7,4 +7,5 @@ clean: ; $(GO) clean -x ./...
 
 .PHONY: install
 install: 4chan-rss
-	install 4chan-rss $(HOME)/go/bin/4chan-rss
+	upx 4chan-rss
+	mv 4chan-rss $(HOME)/go/bin/
