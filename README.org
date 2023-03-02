@@ -1,7 +1,7 @@
 * 4chan-rss
-  Returns a RSS feed of threads of a /board/.
-  Like official RSS (index.rss)
-  BUT removes threads with less than *-n* number of replies.
+  Returns a RSS feed of a board's threads.
+  Like the official RSS ([[https://boards.4channel.org/g/index.rss][index.rss]])
+  BUT removing threads with less than *-n* number of replies.
 ** Usage
    #+begin_src
 > 4chan-rss -b g -n 30 -p 1
