@@ -1,6 +1,6 @@
 module github.com/azimut/4chan-rss
 
-go 1.14
+go 1.19
 
 require (
 	github.com/gorilla/feeds v1.1.1
