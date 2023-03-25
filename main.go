@@ -82,7 +82,7 @@ func processThreads(threads []*api.Thread) []*feeds.Item {
 			continue
 		}
 		item := processPost(thread.OP)
-		item.Title = fmt.Sprintf("[%03d] %s", thread.Replies(), item.Title)
+		item.Title = fmt.Sprintf("[%3d] %s", min(999, thread.Replies()), item.Title)
 		items = append(items, item)
 	}
 	return items
