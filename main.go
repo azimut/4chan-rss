@@ -95,7 +95,9 @@ func processPost(post *api.Post) *feeds.Item {
 		Href: fmt.Sprintf("https://boards.4channel.org/%s/thread/%d/", options.boardName, post.Id),
 	}
 	item.Description = anchorize(strings.ReplaceAll(post.Comment, "<wbr>", ""))
-	item.Description += fmt.Sprintf("<img alt='%s' src='%s'/>", post.File.Name, post.ImageURL())
+	if post.File != nil {
+		item.Description += fmt.Sprintf("<img alt='%s' src='%s'/>", post.File.Name, post.ImageURL())
+	}
 	item.Author = &feeds.Author{Name: post.Name}
 	item.Created = post.Time
 	return item
@@ -112,7 +114,7 @@ func getTitle(post *api.Post) string {
 		title = substring(title, 80)
 		title = strings.TrimSpace(title)
 	}
-	if title == "" {
+	if title == "" && post.File != nil {
 		title = substring(post.File.Name, 80)
 	}
 	if title == "" {
