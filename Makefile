@@ -2,7 +2,7 @@
 	go build -v -ldflags="-s -w"
 	ls -lh $@
 
-.PHONY: cache
+.PHONY: clean
 clean: ; $(GO) clean -x ./...
 
 .PHONY: install
