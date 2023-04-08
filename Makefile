@@ -1,6 +1,6 @@
 4chan-rss: main.go
 	go build -v -ldflags="-s -w"
-	ls -lh 4chan-rss
+	ls -lh $@
 
 .PHONY: cache
 clean: ; $(GO) clean -x ./...

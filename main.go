@@ -96,7 +96,11 @@ func processPost(post *api.Post) *feeds.Item {
 	}
 	item.Description = anchorize(strings.ReplaceAll(post.Comment, "<wbr>", ""))
 	if post.File != nil {
-		item.Description += fmt.Sprintf("<img alt='%s' src='%s'/>", post.File.Name, post.ImageURL())
+		item.Description += fmt.Sprintf(
+			"<img alt='%s' src='%s'/>",
+			post.File.Name+post.File.Ext,
+			post.ImageURL(),
+		)
 	}
 	item.Author = &feeds.Author{Name: post.Name}
 	item.Created = post.Time
@@ -115,7 +119,7 @@ func getTitle(post *api.Post) string {
 		title = strings.TrimSpace(title)
 	}
 	if title == "" && post.File != nil {
-		title = substring(post.File.Name, 80)
+		title = substring(post.File.Name+post.File.Ext, 80)
 	}
 	if title == "" {
 		title = "no title"
