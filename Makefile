@@ -10,7 +10,7 @@ update:
 	go mod tidy
 
 .PHONY: clean
-clean: ; $(GO) clean -x ./...
+clean: ; go clean -x ./...
 
 .PHONY: install
 install: 4chan-rss
