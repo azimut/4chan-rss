@@ -1,4 +1,5 @@
 4chan-rss: main.go
+	go mod tidy
 	go build -v -ldflags="-s -w"
 	ls -lh $@
 
