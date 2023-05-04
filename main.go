@@ -101,6 +101,11 @@ func processPost(post *api.Post) *feeds.Item {
 			post.File.Name+post.File.Ext,
 			post.ImageURL(),
 		)
+		item.Description += fmt.Sprintf(
+			"<img alt='%d.jpg' src='%s'/>",
+			post.File.Id,
+			post.ThumbURL(),
+		)
 	}
 	item.Author = &feeds.Author{Name: post.Name}
 	item.Created = post.Time
